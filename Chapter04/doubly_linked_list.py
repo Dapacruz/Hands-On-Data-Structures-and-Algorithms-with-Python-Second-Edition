@@ -1,5 +1,6 @@
 class Node(object):
-    """ A Doubly-linked lists' node. """
+    """A Doubly-linked lists' node."""
+
     def __init__(self, data=None, next=None, prev=None):
         self.data = data
         self.next = next
@@ -13,7 +14,7 @@ class DoublyLinkedList(object):
         self.count = 0
 
     def append(self, data):
-        """ Append an item to the list. """
+        """Append an item to the list."""
 
         new_node = Node(data, None, None)
         if self.head is None:
@@ -27,15 +28,15 @@ class DoublyLinkedList(object):
         self.count += 1
 
     def iter(self):
-        """ Iterate through the list. """
-        current = self.head #note subtle change
+        """Iterate through the list."""
+        current = self.head  # note subtle change
         while current:
             val = current.data
             current = current.next
             yield val
 
     def reverse_iter(self):
-        """ Iterate backwards through the list. """
+        """Iterate backwards through the list."""
         current = self.tail
         while current:
             val = current.data
@@ -43,7 +44,7 @@ class DoublyLinkedList(object):
             yield val
 
     def delete(self, data):
-        """ Delete a node from the list. """
+        """Delete a node from the list."""
         current = self.head
         node_deleted = False
         if current is None:
@@ -78,19 +79,19 @@ class DoublyLinkedList(object):
         return False
 
     def print_foward(self):
-        """ Print nodes in list from first node inserted to the last . """
+        """Print nodes in list from first node inserted to the last ."""
         for node in self.iter():
             print(node)
 
     def print_backward(self):
-        """ Print nodes in list from latest to first node. """
+        """Print nodes in list from latest to first node."""
         current = self.tail
         while current:
             print(current.data)
             current = current.prev
 
     def insert_head(self, data):
-        """ Insert new node at the head of linked list. """
+        """Insert new node at the head of linked list."""
 
         if self.head is not None:
             new_node = Node(data, None, None)
@@ -100,7 +101,7 @@ class DoublyLinkedList(object):
             self.count += 1
 
     def reverse(self):
-        """ Reverse linked list. """
+        """Reverse linked list."""
         current = self.head
         while current:
             temp = current.next
@@ -116,7 +117,7 @@ class DoublyLinkedList(object):
     def __getitem__(self, index):
         if index > self.count - 1:
             raise Exception("Index out of range.")
-        current = self.head # Note subtle change
+        current = self.head  # Note subtle change
         for n in range(index):
             current = current.next
         return current.data
@@ -124,7 +125,7 @@ class DoublyLinkedList(object):
     def __setitem__(self, index, value):
         if index > self.count - 1:
             raise Exception("Index out of range.")
-        current = self.head # Note subtle change
+        current = self.head  # Note subtle change
         for n in range(index):
             current = current.next
         current.data = value
